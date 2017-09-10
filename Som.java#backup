@@ -1,0 +1,150 @@
+import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+
+/**
+ * Write a description of class Som here.
+ * 
+ * @author (your name) 
+ * @version (a version number or a date)
+ */
+public class Som extends Actor
+{
+    /**
+     * Act - do whatever the Som wants to do. This method is called whenever
+     * the 'Act' or 'Run' button gets pressed in the environment.
+     */
+    private int aux;
+    private GreenfootImage [] som = new GreenfootImage[2];
+    public static GreenfootSound musicamenu = new GreenfootSound("musicamenu.mp3");
+    public static GreenfootSound musicajogo = new GreenfootSound("musicajogo.mp3");
+    public static GreenfootSound musicafim = new GreenfootSound("musicafim.mp3");
+    public void act() 
+    {
+        verificaCliqueSomMenuPrincipal();
+        verificaCliqueSomRegras();
+        verificaCliqueSomMundoJogo();
+        tocaSom();
+    }
+    public Som()
+    {
+        //som1 = true;
+        som[0] = new GreenfootImage("som1.png");
+        som[1] = new GreenfootImage("som2.png");
+        if(MenuPrincipal.//getWorld() instanceof MenuPrincipal)
+        {
+            //aux = MenuPrincipal.imgsom1;
+            setImage(som[0]);
+        }
+        else if(getWorld() instanceof Regras)
+        {
+            aux = Regras.imgsom2;
+            setImage(som[aux]);
+        }
+        else if(getWorld() instanceof MundoJogo)
+        {
+            setImage(som[MundoJogo.imgsom3]);
+        }
+    }
+    public void verificaCliqueSomMenuPrincipal()
+    {
+        if(getWorld() instanceof MenuPrincipal)
+        {
+            if(Greenfoot.mouseClicked(this))
+            {
+                if(MenuPrincipal.som2)
+                {
+                    MenuPrincipal.som2 = false;
+                    setImage(som[1]);
+                }
+                else if(MenuPrincipal.som2 == false)
+                {
+                    MenuPrincipal.som2 = true;
+                    setImage(som[0]);
+                }
+            }
+        }
+    }
+    public void verificaCliqueSomRegras()
+    {
+        if(getWorld() instanceof Regras)
+        {
+            if(Greenfoot.mouseClicked(this))
+            {
+                if(Regras.som1)
+                {
+                    Regras.som1 = false;
+                    setImage(som[1]);
+                }
+                else if(Regras.som1 == false)
+                {
+                    Regras.som1 = true;
+                    setImage(som[0]);
+                }
+            }
+        }
+    }
+    public void verificaCliqueSomMundoJogo()
+    {
+        if(getWorld() instanceof MundoJogo)
+        {
+            if(Greenfoot.mouseClicked(this))
+            {
+                if(MundoJogo.som3)
+                {
+                    MundoJogo.som3 = false;
+                    setImage(som[1]);
+                }
+                else if(MundoJogo.som3 == false)
+                {
+                    MundoJogo.som3 = true;
+                    setImage(som[0]);
+                }
+            }
+        }
+    }
+    public void tocaSom()
+    {
+        if(getWorld() instanceof MenuPrincipal)
+        {
+            if(MenuPrincipal.som2)
+            {
+                if(!musicamenu.isPlaying())
+                    musicamenu.play();
+            }
+            else
+            {
+                if(musicamenu.isPlaying())
+                {
+                    musicamenu.pause();
+                }
+            }
+        }
+        else if(getWorld() instanceof Regras)
+        {
+            if(Regras.som1)
+            {
+                if(!musicamenu.isPlaying())
+                    musicamenu.play();
+            }
+            else
+            {
+                if(musicamenu.isPlaying())
+                {
+                    musicamenu.pause();
+                }
+            }
+        }
+        else if(getWorld() instanceof MundoJogo)
+        {
+            if(MundoJogo.som3)
+            {
+                if(!musicajogo.isPlaying())
+                    musicajogo.play();
+            }
+            else
+            {
+                if(musicajogo.isPlaying())
+                    musicajogo.pause();
+            }
+        }
+    }
+}

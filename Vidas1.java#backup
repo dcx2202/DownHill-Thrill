@@ -1,0 +1,61 @@
+import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+
+/**
+ * Write a description of class Vidas1 here.
+ * 
+ * @author (your name) 
+ * @version (a version number or a date)
+ */
+public class Vidas1 extends Jogador1
+{
+    public static int vidasj1;
+    /**
+     * Act - do whatever the Vidas1 wants to do. This method is called whenever
+     * the 'Act' or 'Run' button gets pressed in the environment.
+     */
+    public void act() 
+    {
+        defineImagem(vidasj1);
+    }
+    public Vidas1()
+    {
+        
+    }
+    public static void tiraVidas()
+    { 
+        switch(vidasj1)
+        {
+            case 5: vidasj1--; break;
+            case 4: vidasj1--; break;
+            case 3: vidasj1--; break;
+            case 2: vidasj1--; break;
+            case 1: vidasj1--; MundoJogo.tempo = 0; break;
+            default: break;
+        }
+    }
+    public static void adicionaVidas()
+    { 
+        switch(vidasj1)
+        {
+            //case 5: vidasj2--; break;
+            case 4: vidasj1++; break;
+            case 3: vidasj1++; break;
+            case 2: vidasj1++; break;
+            case 1: vidasj1++; break; //falta chamar funcao a fazer ainda
+            default: break;
+        }
+    }
+    public void defineImagem(int vidas)
+    { 
+        switch(vidas)
+        {
+            case 5: setImage("vidas5.png"); setLocation(49, getY()); break;
+            case 4: setImage("vidas4.png"); setLocation(41, getY()); break;
+            case 3: setImage("vidas3.png"); setLocation(33, getY()); break;
+            case 2: setImage("vidas2.png"); setLocation(25, getY()); break;
+            case 1: setImage("vidas1.png"); setLocation(17, getY()); break;
+            case 0: setImage("vidas0.png"); setLocation(17, getY()); break;
+            default: break;
+        }
+    }
+}

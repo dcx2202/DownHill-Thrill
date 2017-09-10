@@ -1,0 +1,44 @@
+import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+
+/**
+ * Write a description of class FimJogo here.
+ * 
+ * @author (your name) 
+ * @version (a version number or a date)
+ */
+public class FimJogo extends Objetos
+{
+    private int conta, t;
+    //public static boolean prontoMostrarVencedor;
+    /**
+     * Act - do whatever the FimJogo wants to do. This method is called whenever
+     * the 'Act' or 'Run' button gets pressed in the environment.
+     */
+    public void act() 
+    {
+        aparece();
+    }
+    public FimJogo()
+    {
+        conta = 0;
+        t = 0;
+        getImage().setTransparency(t);
+        //prontoMostrarVencedor = false;
+    }
+    public void aparece()
+    {
+        if(conta == 5)
+        {
+            if(getImage().getTransparency() < 150)
+            {
+                conta = 0;
+                getImage().setTransparency(t);
+                t = t + 5;
+            }
+            else if(getImage().getTransparency() == 150)
+                prontoMostrarVencedor = true;
+        }
+        else
+            conta++;
+    }
+}
